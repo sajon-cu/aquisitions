@@ -1,5 +1,8 @@
 import {signUpSchema} from '#validations/auth.validation.js';
 import {formatValidation} from '#utils/format.js';
+import {createUser} from '#services/auth.service.js';
+import {cookies} from '#utils/cookies.js';
+import {jwtToken} from '#utils/jwt.js';
 
 export const signup = async (req, res, next) => {
     try {
@@ -10,15 +13,19 @@ export const signup = async (req, res, next) => {
 
         // Call Auth Service
         const { name, email, role, password } = validationResult.data;
+        const user = await createUser({name, email, password, role });
+
+        const token = jwtToken.sign({ id: user.id, email: user.email, role: user.role });
+        cookies.set(res, 'token', token);
 
         res.status(201).send({
             success: true,
             message: 'User registration successfully',
             user: {
-                id: 1,
-                name,
-                email,
-                role
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
             }
         });
     } catch (e) {
