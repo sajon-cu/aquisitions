@@ -40,3 +40,15 @@
 {"level":"info","message":"@User already exists","service":"acquisition-api","timestamp":"2026-11-02T11:53:13.125Z"}
 {"level":"info","message":"User sajoncu@gmail.com create successfully.","service":"acquisition-api","timestamp":"2026-11-02T11:53:13.303Z"}
 {"level":"info","message":"::1 - - [02/Nov/2026:11:53:13 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 145 \"-\" \"PostmanRuntime/7.49.1\"","service":"acquisition-api","timestamp":"2026-11-02T11:53:13.309Z"}
+{"level":"info","message":"@User already exists","service":"acquisition-api","timestamp":"2026-11-02T11:54:59.264Z"}
+{"level":"info","message":"User ahad@gmail.com create successfully.","service":"acquisition-api","timestamp":"2026-11-02T11:54:59.389Z"}
+{"level":"info","message":"::1 - - [02/Nov/2026:11:54:59 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 134 \"-\" \"PostmanRuntime/7.49.1\"","service":"acquisition-api","timestamp":"2026-11-02T11:54:59.392Z"}
+{"level":"info","message":"::1 - - [02/Nov/2026:12:15:56 +0000] \"GET /api/auth/sign-in HTTP/1.1\" 404 155 \"-\" \"PostmanRuntime/7.49.1\"","service":"acquisition-api","timestamp":"2026-11-02T12:15:56.417Z"}
+{"level":"info","message":"::1 - - [02/Nov/2026:12:16:03 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 400 80 \"-\" \"PostmanRuntime/7.49.1\"","service":"acquisition-api","timestamp":"2026-11-02T12:16:03.541Z"}
+{"level":"info","message":"::1 - - [02/Nov/2026:12:16:37 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 400 77 \"-\" \"PostmanRuntime/7.49.1\"","service":"acquisition-api","timestamp":"2026-11-02T12:16:37.918Z"}
+{"level":"info","message":"User sajoncu@gmail.com authenticated successfully.","service":"acquisition-api","timestamp":"2026-11-02T12:16:47.557Z"}
+{"level":"info","message":"User signed in successfully: sajoncu@gmail.com","service":"acquisition-api","timestamp":"2026-11-02T12:16:47.560Z"}
+{"level":"info","message":"::1 - - [02/Nov/2026:12:16:47 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 200 142 \"-\" \"PostmanRuntime/7.49.1\"","service":"acquisition-api","timestamp":"2026-11-02T12:16:47.560Z"}
+{"level":"error","message":"Failed to authenticate user Invalid password","service":"acquisition-api","stack":"Error: Invalid password\n    at authenticateUser (file:///home/sajon-bro/Development/aquisitions/src/services/auth.service.js:34:19)\n    at async signIn (file:///home/sajon-bro/Development/aquisitions/src/controllers/auth.controller.js:49:22)","timestamp":"2026-11-02T12:17:03.823Z"}
+{"level":"error","message":"Sign in error Invalid password","service":"acquisition-api","stack":"Error: Invalid password\n    at authenticateUser (file:///home/sajon-bro/Development/aquisitions/src/services/auth.service.js:34:19)\n    at async signIn (file:///home/sajon-bro/Development/aquisitions/src/controllers/auth.controller.js:49:22)","timestamp":"2026-11-02T12:17:03.823Z"}
+{"level":"info","message":"::1 - - [02/Nov/2026:12:17:03 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 401 55 \"-\" \"PostmanRuntime/7.49.1\"","service":"acquisition-api","timestamp":"2026-11-02T12:17:03.824Z"}
