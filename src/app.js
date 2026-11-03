@@ -21,19 +21,20 @@ app.use(
     })
 );
 
-app.use(securityMiddleware);
-
-app.get('/', (req, res) => {
-    logger.info('Hello from acquisition');
-    res.status(200).send('Hello from acquisition');
-});
-
+// Health check stays before security middleware so container probes aren't bot-blocked or rate-limited
 app.get('/health', (req, res) => {
     res.status(200).send({
         status: 'OK',
         timestamp: new Date().toISOString(),
         uptime: process.uptime(),
     });
+});
+
+// app.use(securityMiddleware);
+
+app.get('/', (req, res) => {
+    logger.info('Hello from acquisition');
+    res.status(200).send('Hello from acquisition');
 });
 
 app.get('/api', (req, res) => {

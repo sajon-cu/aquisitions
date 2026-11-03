@@ -43,12 +43,10 @@ const securityMiddleware = async (req, res, next) => {
                 path: req.path,
                 method: req.method,
             });
-            return res
-                .status(403)
-                .send({
-                    error: 'Forbidden.',
-                    message: 'Automated request is not allowed!',
-                });
+            return res.status(403).send({
+                error: 'Forbidden.',
+                message: 'Automated request is not allowed!',
+            });
         }
 
         if (decision.isDenied() && decision.reason.isShield()) {
@@ -58,12 +56,10 @@ const securityMiddleware = async (req, res, next) => {
                 path: req.path,
                 method: req.method,
             });
-            return res
-                .status(403)
-                .send({
-                    error: 'Forbidden.',
-                    message: 'Request blocked by security policy',
-                });
+            return res.status(403).send({
+                error: 'Forbidden.',
+                message: 'Request blocked by security policy',
+            });
         }
 
         if (decision.isDenied() && decision.reason.isRateLimit()) {
@@ -73,12 +69,10 @@ const securityMiddleware = async (req, res, next) => {
                 path: req.path,
                 method: req.method,
             });
-            return res
-                .status(403)
-                .send({
-                    error: 'Forbidden.',
-                    message: 'Too many requests',
-                });
+            return res.status(403).send({
+                error: 'Forbidden.',
+                message: 'Too many requests',
+            });
         }
 
         next();
