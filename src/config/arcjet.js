@@ -11,6 +11,8 @@ const aj = arcjet({
             allow: [
                 'CATEGORY:SEARCH_ENGINE', // Google, Bing, etc
                 'CATEGORY:PREVIEW',
+                'CATEGORY:MONITOR', // Allows uptime monitors & testing tools
+                'CURL', // Allows command-line / API clients like curl and Postman
             ],
         }),
         slidingWindow({

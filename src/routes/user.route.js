@@ -1,5 +1,5 @@
 import express from 'express';
-import { authenticate, requireAdmin } from '#middleware/auth.middleware.js';
+import { authenticateToken, requireRole } from '#middleware/auth.middleware.js';
 import {
     getAllUsers,
     getUserById,
@@ -9,11 +9,16 @@ import {
 
 const router = express.Router();
 
-router.use(authenticate);
+// GET /users - Get all users (admin only)
+router.get('/', authenticateToken, requireRole(['admin']), getAllUsers);
 
-router.get('/', requireAdmin, getAllUsers);
-router.get('/:id', getUserById);
-router.put('/:id', updateUser);
-router.delete('/:id', deleteUser);
+// GET /users/:id - Get user by ID (admin, or the user's own profile)
+router.get('/:id', authenticateToken, getUserById);
+
+// PUT /users/:id - Update user by ID (users can update their own profile, admin can update any)
+router.put('/:id', authenticateToken, updateUser);
+
+// DELETE /users/:id - Delete user by ID (admin only)
+router.delete('/:id', authenticateToken, requireRole(['admin']), deleteUser);
 
 export default router;
