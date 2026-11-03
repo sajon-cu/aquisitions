@@ -6,6 +6,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import authRoute from '#routes/auth.route.js';
 import securityMiddleware from '#middleware/security.middleware.js';
+import userRoute from '#routes/user.route.js';
 
 const app = express();
 
@@ -30,7 +31,7 @@ app.get('/health', (req, res) => {
     });
 });
 
-// app.use(securityMiddleware);
+app.use(securityMiddleware);
 
 app.get('/', (req, res) => {
     logger.info('Hello from acquisition');
@@ -42,5 +43,6 @@ app.get('/api', (req, res) => {
 });
 
 app.use('/api/auth', authRoute);
+app.use('/api/users', userRoute);
 
 export default app;
