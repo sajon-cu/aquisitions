@@ -13,7 +13,7 @@ export const jwtToken = {
             });
         } catch (e) {
             logger.emerg('Failed to authenticate token', e);
-            throw new Error('Failed to authenticate token');
+            throw new Error('Failed to authenticate token', { cause: e });
         }
     },
     verify: token => {
@@ -21,7 +21,7 @@ export const jwtToken = {
             return jwt.verify(token, JWT_SECRET);
         } catch (e) {
             logger.emerg('Failed to authenticate token', e);
-            throw new Error('Failed to authenticate token');
+            throw new Error('Failed to authenticate token', { cause: e });
         }
     },
 };
